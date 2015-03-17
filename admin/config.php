@@ -29,7 +29,7 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	
 	// DB
 	define('DB_DRIVER', 'mysqli');
-	define('DB_HOSTNAME', '127.6.214.2');
+	define('DB_HOSTNAME', '127.6.214.2:3306');
 	define('DB_USERNAME', 'adminmRr8rlm');
 	define('DB_PASSWORD', '6H7AVHISPTGd');
 	define('DB_DATABASE', 'hometodoor');

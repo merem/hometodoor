@@ -3,6 +3,8 @@
 
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 	
+	
+	
 	$OPENSHIFT_REPO_DIR = '/var/lib/openshift/550712f75973ca21b500007a/app-root/repo';
 	
 	
@@ -26,7 +28,7 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	
 	// DB
 	define('DB_DRIVER', 'mysqli');
-	define('DB_HOSTNAME', '127.8.138.130');
+	define('DB_HOSTNAME', '127.6.214.2:3306');
 	define('DB_USERNAME', 'adminmRr8rlm');
 	define('DB_PASSWORD', '6H7AVHISPTGd');
 	define('DB_DATABASE', 'hometodoor');
