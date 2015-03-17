@@ -1,0 +1,5 @@
+2015-03-16 16:20:04 - PHP Notice:  Undefined variable: DISPLAY_MODE in /var/www/queen/catalog/view/theme/pav_queenbeauty/template/product/category.tpl on line 103
+2015-03-16 16:20:46 - PHP Notice:  Undefined variable: DISPLAY_MODE in /var/www/queen/catalog/view/theme/pav_queenbeauty/template/product/category.tpl on line 103
+2015-03-16 16:20:49 - PHP Notice:  Undefined variable: DISPLAY_MODE in /var/www/queen/catalog/view/theme/pav_queenbeauty/template/product/category.tpl on line 103
+2015-03-16 17:03:55 - PHP Notice:  Error: AUTH LOGIN not accepted from server! in /var/www/queen/system/library/mail.php on line 217
+2015-03-16 17:07:19 - PHP Notice:  Error: AUTH LOGIN not accepted from server! in /var/www/queen/system/library/mail.php on line 217
