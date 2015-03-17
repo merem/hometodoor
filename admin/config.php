@@ -38,32 +38,32 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 }
 else{
 // HTTP
-define('HTTP_SERVER', 'http://192.168.0.104/queen/admin/');
-define('HTTP_CATALOG', 'http://192.168.0.104/queen/');
+define('HTTP_SERVER', 'http://192.168.0.104/hometodoor/admin/');
+define('HTTP_CATALOG', 'http://192.168.0.104/hometodoor/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://192.168.0.104/queen/admin/');
-define('HTTPS_CATALOG', 'http://192.168.0.104/queen/');
+define('HTTPS_SERVER', 'http://192.168.0.104/hometodoor/admin/');
+define('HTTPS_CATALOG', 'http://192.168.0.104/hometodoor/');
 
 // DIR
-define('DIR_APPLICATION', '/var/www/queen/admin/');
-define('DIR_SYSTEM', '/var/www/queen/system/');
-define('DIR_DATABASE', '/var/www/queen/system/database/');
-define('DIR_LANGUAGE', '/var/www/queen/admin/language/');
-define('DIR_TEMPLATE', '/var/www/queen/admin/view/template/');
-define('DIR_CONFIG', '/var/www/queen/system/config/');
-define('DIR_IMAGE', '/var/www/queen/image/');
-define('DIR_CACHE', '/var/www/queen/system/cache/');
-define('DIR_DOWNLOAD', '/var/www/queen/download/');
-define('DIR_LOGS', '/var/www/queen/system/logs/');
-define('DIR_CATALOG', '/var/www/queen/catalog/');
+define('DIR_APPLICATION', '/var/www/hometodoor/admin/');
+define('DIR_SYSTEM', '/var/www/hometodoor/system/');
+define('DIR_DATABASE', '/var/www/hometodoor/system/database/');
+define('DIR_LANGUAGE', '/var/www/hometodoor/admin/language/');
+define('DIR_TEMPLATE', '/var/www/hometodoor/admin/view/template/');
+define('DIR_CONFIG', '/var/www/hometodoor/system/config/');
+define('DIR_IMAGE', '/var/www/hometodoor/image/');
+define('DIR_CACHE', '/var/www/hometodoor/system/cache/');
+define('DIR_DOWNLOAD', '/var/www/hometodoor/download/');
+define('DIR_LOGS', '/var/www/hometodoor/system/logs/');
+define('DIR_CATALOG', '/var/www/hometodoor/catalog/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'password');
-define('DB_DATABASE', 'queen');
+define('DB_DATABASE', 'hometodoor');
 define('DB_PREFIX', 'oc_');
 }
 ?>
