@@ -1,4 +1,6 @@
 <?php 
+
+
 class ControllerAccountAccount extends Controller { 
 	public function index() {
 		if (!$this->customer->isLogged()) {
@@ -19,6 +21,7 @@ class ControllerAccountAccount extends Controller {
 			'separator' => false
 		);
 
+		
 		$this->data['breadcrumbs'][] = array(
 			'text'      => $this->language->get('text_account'),
 			'href'      => $this->url->link('account/account', '', 'SSL'),
@@ -60,7 +63,11 @@ class ControllerAccountAccount extends Controller {
 		$this->data['transaction'] = $this->url->link('account/transaction', '', 'SSL');
 		$this->data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
 		$this->data['recurring'] = $this->url->link('account/recurring', '', 'SSL');
+		
+	$this->data['my_products'] = $this->url->link('myproducts/myproducts', '', 'SSL');
 
+		
+		
 		if ($this->config->get('reward_status')) {
 			$this->data['reward'] = $this->url->link('account/reward', '', 'SSL');
 		} else {

@@ -19,7 +19,7 @@
 	<div class="warning alert alert-warning"><?php echo $error; ?></div>
 	<?php } ?>
     <?php require( ThemeControlHelper::getLayoutPath( 'common/breadcrumb.tpl' ) );  ?>
-	<div id="content">
+	<div id="content"  dddd>
 		<?php echo $content_top; ?>
 		<h1><?php echo $heading_title; ?></h1>
 		

@@ -2,6 +2,9 @@
 // Heading 
 $_['heading_title']      = 'My Account';
 
+
+
+
 // Text
 $_['text_account']       = 'Account';
 $_['text_my_account']    = 'My Account';
@@ -19,4 +22,5 @@ $_['text_transaction']   = 'Your Transactions';
 $_['text_newsletter']    = 'Subscribe / unsubscribe to newsletter';
 $_['text_recurring']     = 'Recurring payments';
 $_['text_transactions']  = 'Transactions';
+$_['my_products'] = 'My Products';
 ?>
