@@ -3,6 +3,8 @@
 
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 	
+	$OPENSHIFT_REPO_DIR = '/var/lib/openshift/550712f75973ca21b500007a/app-root/repo';
+	
 	
 	// HTTP
 	define('HTTP_SERVER', 'http://hometodoor-object90.rhcloud.com/');
@@ -16,10 +18,11 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	define('DIR_LANGUAGE', $OPENSHIFT_REPO_DIR.'/catalog/language/');
 	define('DIR_TEMPLATE', $OPENSHIFT_REPO_DIR.'/catalog/view/theme/');
 	define('DIR_CONFIG', $OPENSHIFT_REPO_DIR.'/system/config/');
-	define('DIR_IMAGE',$OPENSHIFT_DATA_DIR.'/image/');
+	define('DIR_IMAGE',$OPENSHIFT_REPO_DIR.'/image/');
 	define('DIR_CACHE', $OPENSHIFT_REPO_DIR.'/system/cache/');
 	define('DIR_DOWNLOAD',$OPENSHIFT_REPO_DIR.'/download/');
 	define('DIR_LOGS', $OPENSHIFT_REPO_DIR.'/system/logs/');
+	
 	
 	// DB
 	define('DB_DRIVER', 'mysqli');
