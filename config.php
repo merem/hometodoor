@@ -1,5 +1,5 @@
 <?php
-//
+//changed from local
 
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 	
