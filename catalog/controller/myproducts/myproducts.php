@@ -13,6 +13,7 @@ class Controllermyproductsmyproducts extends Controller {
 		
 		
 		
+		
 		$this->getList();
 		
 		
