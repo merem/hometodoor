@@ -3,10 +3,7 @@
 
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 	
-	
-	
 	$OPENSHIFT_REPO_DIR = '/var/lib/openshift/550712f75973ca21b500007a/app-root/repo';
-	
 	
 	// HTTP
 	define('HTTP_SERVER', 'http://hometodoor-object90.rhcloud.com/');
@@ -42,9 +39,9 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 else{
 	
 // HTTP
-define('HTTP_SERVER', 'http://192.168.0.104/hometodoor/');
+define('HTTP_SERVER', 'http://192.168.0.101/hometodoor/');
 // HTTPS
-define('HTTPS_SERVER', 'http://192.168.0.104/hometodoor/');
+define('HTTPS_SERVER', 'http://192.168.0.101/hometodoor/');
 
 // DIR
 define('DIR_APPLICATION', '/var/www/hometodoor/catalog/');

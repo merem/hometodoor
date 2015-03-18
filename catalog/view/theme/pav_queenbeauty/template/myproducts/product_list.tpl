@@ -2,6 +2,10 @@
 
 	?>
 	
+	
+<style>body #page{overflow:auto !important;}</style>
+	
+	
 
 <div id="content" >
   <div class="breadcrumb">
@@ -15,10 +19,10 @@
   <?php if ($success) { ?>
   <div class="success"><?php echo $success; ?></div>
   <?php } ?>
-  <div class="box">
+  <div class="box container">
     <div class="heading">
-      <h1><img src="view/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('#form').attr('action', '<?php echo $copy; ?>'); $('#form').submit();" class="button"><?php echo $button_copy; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
+      <h1><img src="catalog/view/theme/pav_queenbeauty/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <div class="buttons"><a href="<?php echo $insert; ?>" class="button"> <button><?php echo $button_insert; ?></button> </a> <a onclick="$('form').submit();" class="button"><button><?php echo $button_delete; ?></button></a></div>
     </div>
     <div class="content">
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
@@ -61,9 +65,9 @@
               <td></td>
               <td><input type="text" name="filter_name" value="<?php echo $filter_name; ?>" /></td>
               <td><input type="text" name="filter_model" value="<?php echo $filter_model; ?>" /></td>
-              <td align="left"><input type="text" name="filter_price" value="<?php echo $filter_price; ?>" size="8"/></td>
-              <td align="right"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" style="text-align: right;" /></td>
-              <td><select name="filter_status">
+              <td align="left"><input type="text" name="filter_price" value="<?php echo $filter_price; ?>" size="8"/   style="display:none"></td>
+              <td align="right"><input type="text" name="filter_quantity" value="<?php echo $filter_quantity; ?>" style="text-align: right;display:none;" /></td>
+              <td><select name="filter_status" style="display: none;">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
                   <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
@@ -76,7 +80,7 @@
                   <option value="0"><?php echo $text_disabled; ?></option>
                   <?php } ?>
                 </select></td>
-              <td align="right"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
+              <td align="right"><a onclick="filter();" class="button"  style="display: none;"	><button><?php echo $button_filter; ?></button></a></td>
             </tr>
             <?php if ($products) { ?>
             <?php foreach ($products as $product) { ?>
@@ -122,9 +126,11 @@
 </div>
 <script type="text/javascript"><!--
 function filter() {
-	url = 'index.php?route=catalog/product&token=<?php echo $token; ?>';
+	url = 'index.php?route=myproducts/myproducts&token=<?php echo $token; ?>';
 	
 	var filter_name = $('input[name=\'filter_name\']').attr('value');
+
+ 
 	
 	if (filter_name) {
 		url += '&filter_name=' + encodeURIComponent(filter_name);
@@ -154,8 +160,12 @@ function filter() {
 		url += '&filter_status=' + encodeURIComponent(filter_status);
 	}	
 
-	location = url;
+	
+	 location = url;
+
+ 
 }
+
 //--></script> 
 <script type="text/javascript"><!--
 $('#form input').keydown(function(e) {
@@ -169,7 +179,7 @@ $('input[name=\'filter_name\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
-			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=myproducts/myproducts/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
 				response($.map(json, function(item) {
@@ -195,7 +205,7 @@ $('input[name=\'filter_model\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
-			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_model=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=myproducts/myproducts/autocomplete&token=<?php echo $token; ?>&filter_model=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
 				response($.map(json, function(item) {

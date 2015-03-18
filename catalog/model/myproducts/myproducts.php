@@ -332,6 +332,10 @@ class Modelmyproductsmyproducts extends Model {
 	}
 
 	public function getProducts($data = array()) {
+	 
+				//echo $data['filter_name'];
+			//	exit;
+		
 		$sql = "SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)";
 
 		if (!empty($data['filter_category_id'])) {
@@ -394,7 +398,7 @@ class Modelmyproductsmyproducts extends Model {
 
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}	
-
+ 
 		$query = $this->db->query($sql);
 
 		return $query->rows;
