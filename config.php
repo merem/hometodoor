@@ -1,6 +1,6 @@
 <?php
 
-// added by talha 0001
+// added by talha 0002
 
 // added in config.php
 
