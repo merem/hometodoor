@@ -1,6 +1,8 @@
 <?php
 
 
+
+
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 	
 	$OPENSHIFT_REPO_DIR = '/var/lib/openshift/550712f75973ca21b500007a/app-root/repo';

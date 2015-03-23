@@ -1,10 +1,5 @@
 <?php
-//changed from local
-//echo error_reporting();
-//exit;   
 
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
 
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 	
