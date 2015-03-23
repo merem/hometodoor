@@ -1,8 +1,14 @@
 <?php
 
-// added by talha 0003
+
+
+
+ //added by talha 00023
+
 
 // added in config.php
+
+
 
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 	
