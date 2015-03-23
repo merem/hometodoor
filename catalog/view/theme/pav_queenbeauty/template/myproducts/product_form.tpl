@@ -366,7 +366,7 @@ echo $header; ?>
             <?php  */?>                   
           </table>
         </div>
-     <?php  /*?>     
+     <?php  ?>     
         <div id="tab-attribute">
           <table id="attribute" class="list">
             <thead>
@@ -400,7 +400,7 @@ echo $header; ?>
           </table>
         </div>
         
-                
+                <?php  /*?>
         <div id="tab-option">
           <div id="vtab-option" class="vtabs">
             <?php $option_row = 0; ?>
@@ -832,6 +832,64 @@ CKEDITOR.replace('description<?php echo $language['language_id']; ?>', {
 });
 <?php } ?>
 //--></script> 
+
+<script type="text/javascript"> 
+var attribute_row = <?php echo $attribute_row; ?>;
+
+function addAttribute() {
+	html  = '<tbody id="attribute-row' + attribute_row + '">';
+    html += '  <tr>';
+	html += '    <td class="left"><input type="text" name="product_attribute[' + attribute_row + '][name]" value="" /><input type="hidden" name="product_attribute[' + attribute_row + '][attribute_id]" value="" /></td>';
+	html += '    <td class="left">';
+	<?php foreach ($languages as $language) { ?>
+	html += '<textarea name="product_attribute[' + attribute_row + '][product_attribute_description][<?php echo $language['language_id']; ?>][text]" cols="40" rows="5"></textarea><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" align="top" /><br />';
+    <?php } ?>
+	html += '    </td>';
+	html += '    <td class="left"><a onclick="$(\'#attribute-row' + attribute_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
+    html += '  </tr>';	
+    html += '</tbody>';
+	
+	$('#attribute tfoot').before(html);
+	
+	attributeautocomplete(attribute_row);
+	
+	attribute_row++;
+}
+
+function attributeautocomplete(attribute_row) {
+	$('input[name=\'product_attribute[' + attribute_row + '][name]\']').catcomplete({
+		delay: 500,
+		source: function(request, response) {
+			$.ajax({
+				url: 'index.php?route=myproducts/attribute/autocomplete&filter_name=' +  encodeURIComponent(request.term),
+				dataType: 'json',
+				success: function(json) {	
+					response($.map(json, function(item) {
+						return {
+							category: item.attribute_group,
+							label: item.name,
+							value: item.attribute_id
+						}
+					}));
+				}
+			});
+		}, 
+		select: function(event, ui) {
+			$('input[name=\'product_attribute[' + attribute_row + '][name]\']').attr('value', ui.item.label);
+			$('input[name=\'product_attribute[' + attribute_row + '][attribute_id]\']').attr('value', ui.item.value);
+			
+			return false;
+		},
+		focus: function(event, ui) {
+      		return false;
+   		}
+	});
+}
+
+$('#attribute tbody').each(function(index, element) {
+	attributeautocomplete(index);
+});
+ </script> 
 <script type="text/javascript"><!--
 $.widget('custom.catcomplete', $.ui.autocomplete, {
 	_renderMenu: function(ul, items) {
@@ -854,7 +912,7 @@ $('input[name=\'manufacturer\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
-			url: 'index.php?route=myproducts/manufacturer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=myproducts/manufacturer/autocomplete&filter_name=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
 				response($.map(json, function(item) {
@@ -882,7 +940,7 @@ $('input[name=\'category\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
-			url: 'index.php?route=myproducts/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=myproducts/category/autocomplete&filter_name=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
 				response($.map(json, function(item) {

@@ -408,3 +408,14 @@ admin/view/template/module/pavblog/comment.tpl
 admin/controller/module/pavtestimonial.php
 admin/view/template/module/pavtestimonial.tpl
 admin/language/english/error/not_found.php
+admin/controller/catalog/attribute.php
+admin/language/english/catalog/attribute.php
+admin/view/template/catalog/attribute_list.tpl
+admin/controller/catalog/attribute_group.php
+admin/language/english/catalog/attribute_group.php
+admin/model/catalog/attribute_group.php
+admin/view/template/catalog/attribute_group_list.tpl
+admin/view/template/catalog/attribute_form.tpl
+admin/view/template/catalog/attribute_group_form.tpl
+admin/view/template/catalog/option_form.tpl
+catalog/controller/myproducts/attribute.php
