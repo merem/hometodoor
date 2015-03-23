@@ -157,6 +157,7 @@ class Modelmyproductsmyproducts extends Model {
 				}
 			}
 		}
+		
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option WHERE product_id = '" . (int)$product_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_option_value WHERE product_id = '" . (int)$product_id . "'");
