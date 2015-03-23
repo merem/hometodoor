@@ -403,3 +403,7 @@ catalog/language/english/account/order.php
 catalog/model/account/order.php
 catalog/view/theme/pav_queenbeauty/template/account/order_list.tpl
 catalog/view/theme/pav_queenbeauty/template/account/order_info.tpl
+admin/view/template/module/pavblog/comments.tpl
+admin/view/template/module/pavblog/comment.tpl
+admin/controller/module/pavtestimonial.php
+admin/view/template/module/pavtestimonial.tpl
