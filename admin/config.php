@@ -20,7 +20,7 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	define('DIR_SYSTEM', $OPENSHIFT_REPO_DIR.'/system/');
 	define('DIR_DATABASE',$OPENSHIFT_REPO_DIR.'/system/database/');
 	define('DIR_LANGUAGE', $OPENSHIFT_REPO_DIR.'/admin/language/');
-	define('DIR_TEMPLATE', $OPENSHIFT_REPO_DIR.'/admin/view/theme/');
+	define('DIR_TEMPLATE', $OPENSHIFT_REPO_DIR.'/admin/view/template/');
 	define('DIR_CONFIG', $OPENSHIFT_REPO_DIR.'/system/config/');
 	define('DIR_IMAGE',$OPENSHIFT_REPO_DIR.'/image/');
 	define('DIR_CACHE', $OPENSHIFT_REPO_DIR.'/system/cache/');
