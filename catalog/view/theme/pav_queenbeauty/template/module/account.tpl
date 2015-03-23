@@ -27,10 +27,11 @@
       <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
 
       <li><a href="<?php echo $recurring; ?>"><?php echo $text_recurring; ?></a></li>
+      <li><a href="<?php   echo $myproducts; ?>">My Products</a></li>
 
 
       <?php if ($logged) { ?>
-      <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+      <li><a href="<?php   echo $logout; ?>"><?php echo $text_logout; ?></a></li>
       <?php } ?>
     </ul>
   </div>

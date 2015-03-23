@@ -37,6 +37,7 @@ class ControllerModuleAccount extends Controller {
 		$this->data['transaction'] = $this->url->link('account/transaction', '', 'SSL');
 		$this->data['newsletter'] = $this->url->link('account/newsletter', '', 'SSL');
 		$this->data['recurring'] = $this->url->link('account/recurring', '', 'SSL');
+		$this->data['myproducts'] = $this->url->link('myproducts/myproducts', '', 'SSL');
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/account.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/module/account.tpl';

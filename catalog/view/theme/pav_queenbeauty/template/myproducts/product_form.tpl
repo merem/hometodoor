@@ -1,21 +1,35 @@
-<?php echo $header; ?>
+<?php 
+require( DIR_TEMPLATE.$this->config->get('config_template')."/template/common/config.tpl" );
 
+echo $header; ?>
+
+
+<link href="catalog/view/theme/pav_queenbeauty/stylesheet/pavnewsletter.css" rel="stylesheet" />
+<link href="catalog/view/theme/pav_queenbeauty/stylesheet/pavmegamenubase.css" rel="stylesheet" />
+
+
+
+	<div  id="content"   class="container">
+<div class="row">
 <style>body #page{overflow:auto !important;}</style>
+ <?php if( $SPAN[0] ): ?>
+	<aside class="col-lg-<?php echo $SPAN[0];?> col-md-<?php echo $SPAN[0];?> col-sm-12 col-xs-12">
+		<?php echo $column_left; ?>
+	</aside>
+<?php endif; ?>
 
+	
 
-<div id="content">
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
+<section class="col-lg-<?php echo $SPAN[1];?> col-md-<?php echo $SPAN[1];?> col-sm-12 col-xs-12">
+      <?php require( ThemeControlHelper::getLayoutPath( 'common/breadcrumb.tpl' ) );  ?>
+  
   <?php if ($error_warning) { ?>
   <div class="warning"><?php echo $error_warning; ?></div>
   <?php } ?>
   <div class="box container">
     <div class="heading">
       <h1><img src="catalog/view/theme/pav_queenbeauty/image/product.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons"><a onclick="$('#form').submit();" class="button"><button><?php echo $button_save; ?></button></a><a href="<?php echo $cancel; ?>" class="button"><button><?php echo $button_cancel; ?></button></a></div>
+      <div class="buttons"><a onclick="$('#form').submit();" class="button"><button><?php echo $button_save; ?></button></a>&emsp;<a href="<?php echo $cancel; ?>" class="button"><button><?php echo $button_cancel; ?></button></a></div>
     </div>
     <div class="content">
     <?php /*?>  <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a><a href="#tab-attribute"><?php echo $tab_attribute; ?></a><a href="#tab-option"><?php echo $tab_option; ?></a><a href="#tab-profile"><?php echo $tab_profile; ?></a><a href="#tab-discount"><?php echo $tab_discount; ?></a><a href="#tab-special"><?php echo $tab_special; ?></a><a href="#tab-image"><?php echo $tab_image; ?></a><a href="#tab-reward"><?php echo $tab_reward; ?></a><a href="#tab-design"><?php echo $tab_design; ?></a></div><?php */?>
@@ -123,11 +137,13 @@
                   <?php } ?>
                 </select></td>
             </tr>
-              
+              <?php */?>
             <tr>
               <td><?php echo $entry_quantity; ?></td>
               <td><input type="text" name="quantity" value="<?php echo $quantity; ?>" size="2" /></td>
             </tr>
+            
+            <?php /*?>
             <tr>
               <td><?php echo $entry_minimum; ?></td>
               <td><input type="text" name="minimum" value="<?php echo $minimum; ?>" size="2" /></td>
@@ -174,16 +190,22 @@
               <td><?php echo $entry_keyword; ?></td>
               <td><input type="text" name="keyword" value="<?php echo $keyword; ?>" /></td>
             </tr>
+            <?php */?>
             <tr>
               <td><?php echo $entry_image; ?></td>
               <td><div class="image"><img src="<?php echo $thumb; ?>" alt="" id="thumb" /><br />
                   <input type="hidden" name="image" value="<?php echo $image; ?>" id="image" />
                   <a onclick="image_upload('image', 'thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#thumb').attr('src', '<?php echo $no_image; ?>'); $('#image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
             </tr>
-            <tr>
+            
+            
+            
+            
+            <tr style="display:none;>
               <td><?php echo $entry_date_available; ?></td>
               <td><input type="text" name="date_available" value="<?php echo $date_available; ?>" size="12" class="date" /></td>
             </tr>
+            <?php  /*?>
             <tr>
               <td><?php echo $entry_dimension; ?></td>
               <td><input type="text" name="length" value="<?php echo $length; ?>" size="4" />
@@ -218,6 +240,7 @@
                   <?php } ?>
                 </select></td>
             </tr>
+            <?php */ ?>
             <tr>
               <td><?php echo $entry_status; ?></td>
               <td><select name="status">
@@ -230,6 +253,8 @@
                   <?php } ?>
                 </select></td>
             </tr>
+            
+            <?php /*?>
             <tr>
               <td><?php echo $entry_sort_order; ?></td>
               <td><input type="text" name="sort_order" value="<?php echo $sort_order; ?>" size="2" /></td>
@@ -277,8 +302,8 @@
                   <?php } ?>
                 </div></td>
             </tr>    
-             <
-            <tr>
+              <?php */ ?>
+            <tr  style="display: none;">
               <td><?php echo $entry_store; ?></td>
               <td><div class="scrollbox">
                   <?php $class = 'even'; ?>
@@ -305,6 +330,7 @@
                   <?php } ?>
                 </div></td>
             </tr>
+            <?php /* ?>
             <tr>
               <td><?php echo $entry_download; ?></td>
               <td><input type="text" name="download" value="" /></td>
@@ -686,7 +712,7 @@
             </tfoot>
           </table>
         </div>
-          
+          <?php */ ?>
         <div id="tab-image">
           <table id="images" class="list">
             <thead>
@@ -719,6 +745,7 @@
           </table>
         </div>
         
+        <?php  /*?>
         <div id="tab-reward">
           <table class="form">
             <tr>
@@ -790,7 +817,8 @@
       </form>
     </div>
   </div>
-</div>
+</section>
+</div></div>
 <script type="text/javascript" src="catalog/view/theme/pav_queenbeauty/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
@@ -1004,303 +1032,21 @@ $('#product-related div img').live('click', function() {
 	$('#product-related div:odd').attr('class', 'odd');
 	$('#product-related div:even').attr('class', 'even');	
 });
-//--></script> 
-<script type="text/javascript"><!--
-var attribute_row = <?php echo $attribute_row; ?>;
-
-function addAttribute() {
-	html  = '<tbody id="attribute-row' + attribute_row + '">';
-    html += '  <tr>';
-	html += '    <td class="left"><input type="text" name="product_attribute[' + attribute_row + '][name]" value="" /><input type="hidden" name="product_attribute[' + attribute_row + '][attribute_id]" value="" /></td>';
-	html += '    <td class="left">';
-	<?php foreach ($languages as $language) { ?>
-	html += '<textarea name="product_attribute[' + attribute_row + '][product_attribute_description][<?php echo $language['language_id']; ?>][text]" cols="40" rows="5"></textarea><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" align="top" /><br />';
-    <?php } ?>
-	html += '    </td>';
-	html += '    <td class="left"><a onclick="$(\'#attribute-row' + attribute_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
-    html += '  </tr>';	
-    html += '</tbody>';
-	
-	$('#attribute tfoot').before(html);
-	
-	attributeautocomplete(attribute_row);
-	
-	attribute_row++;
-}
-
-function attributeautocomplete(attribute_row) {
-	$('input[name=\'product_attribute[' + attribute_row + '][name]\']').catcomplete({
-		delay: 500,
-		source: function(request, response) {
-			$.ajax({
-				url: 'index.php?route=catalog/attribute/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
-				dataType: 'json',
-				success: function(json) {	
-					response($.map(json, function(item) {
-						return {
-							category: item.attribute_group,
-							label: item.name,
-							value: item.attribute_id
-						}
-					}));
-				}
-			});
-		}, 
-		select: function(event, ui) {
-			$('input[name=\'product_attribute[' + attribute_row + '][name]\']').attr('value', ui.item.label);
-			$('input[name=\'product_attribute[' + attribute_row + '][attribute_id]\']').attr('value', ui.item.value);
-			
-			return false;
-		},
-		focus: function(event, ui) {
-      		return false;
-   		}
-	});
-}
-
-$('#attribute tbody').each(function(index, element) {
-	attributeautocomplete(index);
-});
-//--></script> 
-<script type="text/javascript"><!--	
-var option_row = <?php echo $option_row; ?>;
-
-$('input[name=\'option\']').catcomplete({
-	delay: 500,
-	source: function(request, response) {
-		$.ajax({
-			url: 'index.php?route=catalog/option/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
-			dataType: 'json',
-			success: function(json) {
-				response($.map(json, function(item) {
-					return {
-						category: item.category,
-						label: item.name,
-						value: item.option_id,
-						type: item.type,
-						option_value: item.option_value
-					}
-				}));
-			}
-		});
-	}, 
-	select: function(event, ui) {
-		html  = '<div id="tab-option-' + option_row + '" class="vtabs-content">';
-		html += '	<input type="hidden" name="product_option[' + option_row + '][product_option_id]" value="" />';
-		html += '	<input type="hidden" name="product_option[' + option_row + '][name]" value="' + ui.item.label + '" />';
-		html += '	<input type="hidden" name="product_option[' + option_row + '][option_id]" value="' + ui.item.value + '" />';
-		html += '	<input type="hidden" name="product_option[' + option_row + '][type]" value="' + ui.item.type + '" />';
-		html += '	<table class="form">';
-		html += '	  <tr>';
-		html += '		<td><?php echo $entry_required; ?></td>';
-		html += '       <td><select name="product_option[' + option_row + '][required]">';
-		html += '	      <option value="1"><?php echo $text_yes; ?></option>';
-		html += '	      <option value="0"><?php echo $text_no; ?></option>';
-		html += '	    </select></td>';
-		html += '     </tr>';
-		
-		if (ui.item.type == 'text') {
-			html += '     <tr>';
-			html += '       <td><?php echo $entry_option_value; ?></td>';
-			html += '       <td><input type="text" name="product_option[' + option_row + '][option_value]" value="" /></td>';
-			html += '     </tr>';
-		}
-		
-		if (ui.item.type == 'textarea') {
-			html += '     <tr>';
-			html += '       <td><?php echo $entry_option_value; ?></td>';
-			html += '       <td><textarea name="product_option[' + option_row + '][option_value]" cols="40" rows="5"></textarea></td>';
-			html += '     </tr>';						
-		}
-		 
-		if (ui.item.type == 'file') {
-			html += '     <tr style="display: none;">';
-			html += '       <td><?php echo $entry_option_value; ?></td>';
-			html += '       <td><input type="text" name="product_option[' + option_row + '][option_value]" value="" /></td>';
-			html += '     </tr>';			
-		}
-						
-		if (ui.item.type == 'date') {
-			html += '     <tr>';
-			html += '       <td><?php echo $entry_option_value; ?></td>';
-			html += '       <td><input type="text" name="product_option[' + option_row + '][option_value]" value="" class="date" /></td>';
-			html += '     </tr>';			
-		}
-		
-		if (ui.item.type == 'datetime') {
-			html += '     <tr>';
-			html += '       <td><?php echo $entry_option_value; ?></td>';
-			html += '       <td><input type="text" name="product_option[' + option_row + '][option_value]" value="" class="datetime" /></td>';
-			html += '     </tr>';			
-		}
-		
-		if (ui.item.type == 'time') {
-			html += '     <tr>';
-			html += '       <td><?php echo $entry_option_value; ?></td>';
-			html += '       <td><input type="text" name="product_option[' + option_row + '][option_value]" value="" class="time" /></td>';
-			html += '     </tr>';			
-		}
-		
-		html += '  </table>';
-			
-		if (ui.item.type == 'select' || ui.item.type == 'radio' || ui.item.type == 'checkbox' || ui.item.type == 'image') {
-			html += '  <table id="option-value' + option_row + '" class="list">';
-			html += '  	 <thead>'; 
-			html += '      <tr>';
-			html += '        <td class="left"><?php echo $entry_option_value; ?></td>';
-			html += '        <td class="right"><?php echo $entry_quantity; ?></td>';
-			html += '        <td class="left"><?php echo $entry_subtract; ?></td>';
-			html += '        <td class="right"><?php echo $entry_price; ?></td>';
-			html += '        <td class="right"><?php echo $entry_option_points; ?></td>';
-			html += '        <td class="right"><?php echo $entry_weight; ?></td>';
-			html += '        <td></td>';
-			html += '      </tr>';
-			html += '  	 </thead>';
-			html += '    <tfoot>';
-			html += '      <tr>';
-			html += '        <td colspan="6"></td>';
-			html += '        <td class="left"><a onclick="addOptionValue(' + option_row + ');" class="button"><?php echo $button_add_option_value; ?></a></td>';
-			html += '      </tr>';
-			html += '    </tfoot>';
-			html += '  </table>';
-            html += '  <select id="option-values' + option_row + '" style="display: none;">';
-			
-            for (i = 0; i < ui.item.option_value.length; i++) {
-				html += '  <option value="' + ui.item.option_value[i]['option_value_id'] + '">' + ui.item.option_value[i]['name'] + '</option>';
-            }
-
-            html += '  </select>';			
-			html += '</div>';	
-		}
-		
-		$('#tab-option').append(html);
-		
-		$('#option-add').before('<a href="#tab-option-' + option_row + '" id="option-' + option_row + '">' + ui.item.label + '&nbsp;<img src="catalog/view/theme/pav_queenbeauty/image/delete.png" alt="" onclick="$(\'#option-' + option_row + '\').remove(); $(\'#tab-option-' + option_row + '\').remove(); $(\'#vtab-option a:first\').trigger(\'click\'); return false;" /></a>');
-		
-		$('#vtab-option a').tabs();
-		
-		$('#option-' + option_row).trigger('click');		
-		
-		$('.date').datepicker({dateFormat: 'yy-mm-dd'});
-		$('.datetime').datetimepicker({
-			dateFormat: 'yy-mm-dd',
-			timeFormat: 'h:m'
-		});	
-			
-		$('.time').timepicker({timeFormat: 'h:m'});	
-				
-		option_row++;
-		
-		return false;
-	},
-	focus: function(event, ui) {
-      return false;
-   }
-});
-//--></script> 
-<script type="text/javascript"><!--		
-var option_value_row = <?php echo $option_value_row; ?>;
-
-function addOptionValue(option_row) {	
-	html  = '<tbody id="option-value-row' + option_value_row + '">';
-	html += '  <tr>';
-	html += '    <td class="left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]">';
-	html += $('#option-values' + option_row).html();
-	html += '    </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
-	html += '    <td class="right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" size="3" /></td>'; 
-	html += '    <td class="left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]">';
-	html += '      <option value="1"><?php echo $text_yes; ?></option>';
-	html += '      <option value="0"><?php echo $text_no; ?></option>';
-	html += '    </select></td>';
-	html += '    <td class="right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]">';
-	html += '      <option value="+">+</option>';
-	html += '      <option value="-">-</option>';
-	html += '    </select>';
-	html += '    <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" size="5" /></td>';
-	html += '    <td class="right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]">';
-	html += '      <option value="+">+</option>';
-	html += '      <option value="-">-</option>';
-	html += '    </select>';
-	html += '    <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points]" value="" size="5" /></td>';	
-	html += '    <td class="right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight_prefix]">';
-	html += '      <option value="+">+</option>';
-	html += '      <option value="-">-</option>';
-	html += '    </select>';
-	html += '    <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight]" value="" size="5" /></td>';
-	html += '    <td class="left"><a onclick="$(\'#option-value-row' + option_value_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
-	html += '  </tr>';
-	html += '</tbody>';
-	
-	$('#option-value' + option_row + ' tfoot').before(html);
-
-	option_value_row++;
-}
-//--></script> 
-<script type="text/javascript"><!--
-var discount_row = <?php echo $discount_row; ?>;
-
-function addDiscount() {
-	html  = '<tbody id="discount-row' + discount_row + '">';
-	html += '  <tr>'; 
-    html += '    <td class="left"><select name="product_discount[' + discount_row + '][customer_group_id]">';
-    <?php foreach ($customer_groups as $customer_group) { ?>
-    html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
-    <?php } ?>
-    html += '    </select></td>';		
-    html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" size="2" /></td>';
-    html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][priority]" value="" size="2" /></td>';
-	html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][price]" value="" /></td>';
-    html += '    <td class="left"><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" class="date" /></td>';
-	html += '    <td class="left"><input type="text" name="product_discount[' + discount_row + '][date_end]" value="" class="date" /></td>';
-	html += '    <td class="left"><a onclick="$(\'#discount-row' + discount_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
-	html += '  </tr>';	
-    html += '</tbody>';
-	
-	$('#discount tfoot').before(html);
-		
-	$('#discount-row' + discount_row + ' .date').datepicker({dateFormat: 'yy-mm-dd'});
-	
-	discount_row++;
-}
-//--></script> 
-<script type="text/javascript"><!--
-var special_row = <?php echo $special_row; ?>;
-
-function addSpecial() {
-	html  = '<tbody id="special-row' + special_row + '">';
-	html += '  <tr>'; 
-    html += '    <td class="left"><select name="product_special[' + special_row + '][customer_group_id]">';
-    <?php foreach ($customer_groups as $customer_group) { ?>
-    html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
-    <?php } ?>
-    html += '    </select></td>';		
-    html += '    <td class="right"><input type="text" name="product_special[' + special_row + '][priority]" value="" size="2" /></td>';
-	html += '    <td class="right"><input type="text" name="product_special[' + special_row + '][price]" value="" /></td>';
-    html += '    <td class="left"><input type="text" name="product_special[' + special_row + '][date_start]" value="" class="date" /></td>';
-	html += '    <td class="left"><input type="text" name="product_special[' + special_row + '][date_end]" value="" class="date" /></td>';
-	html += '    <td class="left"><a onclick="$(\'#special-row' + special_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
-	html += '  </tr>';
-    html += '</tbody>';
-	
-	$('#special tfoot').before(html);
+ </script> 
  
-	$('#special-row' + special_row + ' .date').datepicker({dateFormat: 'yy-mm-dd'});
-	
-	special_row++;
-}
-//--></script> 
-<script type="text/javascript"><!--
+ <script type="text/javascript"> 
 function image_upload(field, thumb) {
+	
 	$('#dialog').remove();
 	
-	$('#content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=common/filemanager&token=<?php echo $token; ?>&field=' + encodeURIComponent(field) + '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
+	$('#content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=myproducts/filemanager&token=<?php echo $token; ?>&field=' + encodeURIComponent(field) + '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
 	
 	$('#dialog').dialog({
 		title: '<?php echo $text_image_manager; ?>',
 		close: function (event, ui) {
 			if ($('#' + field).attr('value')) {
 				$.ajax({
-					url: 'index.php?route=common/filemanager/image&token=<?php echo $token; ?>&image=' + encodeURIComponent($('#' + field).attr('value')),
+					url: 'index.php?route=myproducts/filemanager/image&image=' + encodeURIComponent($('#' + field).attr('value')),
 					dataType: 'text',
 					success: function(text) {
 						$('#' + thumb).replaceWith('<img src="' + text + '" alt="" id="' + thumb + '" />');
@@ -1315,8 +1061,10 @@ function image_upload(field, thumb) {
 		modal: false
 	});
 };
-//--></script> 
-<script type="text/javascript"><!--
+ </script> 
+
+ 
+ <script type="text/javascript"> 
 var image_row = <?php echo $image_row; ?>;
 
 function addImage() {
@@ -1332,77 +1080,6 @@ function addImage() {
 	
 	image_row++;
 }
-//--></script> 
-<script type="text/javascript" src="catalog/view/theme/pav_queenbeauty/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
-<script type="text/javascript"><!--
-$('.date').datepicker({dateFormat: 'yy-mm-dd'});
-$('.datetime').datetimepicker({
-	dateFormat: 'yy-mm-dd',
-	timeFormat: 'h:m'
-});
-$('.time').timepicker({timeFormat: 'h:m'});
-//--></script> 
-<script type="text/javascript"><!--
-$('#tabs a').tabs(); 
-$('#languages a').tabs(); 
-$('#vtab-option a').tabs();
-
-var profileCount = <?php echo $profileCount ?>;
-
-function addProfile() {
-    profileCount++;
-    
-    var html = '';
-    html += '<tr id="profile-row' + profileCount + '">';
-    html += '  <td class="left">';
-    html += '    <select name="product_profiles[' + profileCount + '][profile_id]">';
-    <?php foreach ($profiles as $profile): ?>
-    html += '      <option value="<?php echo $profile['profile_id'] ?>"><?php echo $profile['name'] ?></option>';
-    <?php endforeach; ?>
-    html += '    </select>';
-    html += '  </td>';
-    html += '  <td class="left">';
-    html += '    <select name="product_profiles[' + profileCount + '][customer_group_id]">';
-    <?php foreach ($customer_groups as $customer_group): ?>
-    html += '      <option value="<?php echo $customer_group['customer_group_id'] ?>"><?php echo $customer_group['name'] ?></option>';
-    <?php endforeach; ?>
-    html += '    <select>';
-    html += '  </td>';
-    html += '  <td class="left">';
-    html += '    <a class="button" onclick="$(\'#profile-row' + profileCount + '\').remove()"><?php echo $button_remove ?></a>';
-    html += '  </td>';
-    html += '</tr>';
-    
-    $('#tab-profile table tbody').append(html);
-}
-
-<?php if (isset($this->request->get['product_id'])) { ?>
-    function openbayLinkStatus(){
-        var product_id = '<?php echo $this->request->get['product_id']; ?>';
-        $.ajax({
-            type: 'GET',
-            url: 'index.php?route=extension/openbay/linkStatus&token=<?php echo $token; ?>&product_id='+product_id,
-            dataType: 'html',
-            success: function(data) {
-                //add the button to nav
-                $('<a href="#tab-openbay"><?php echo $tab_marketplace_links ?></a>').hide().appendTo("#tabs").fadeIn(1000);
-                $('#tab-general').before(data);
-                $('#tabs a').tabs();
-            },
-            failure: function(){
-
-            },
-            error: function() {
-
-            }
-        });
-    }
-
-    $(document).ready(function(){
-        openbayLinkStatus();
-    });
-<?php } ?>
-
-//--></script>
+ </script> 
 
 <?php echo $footer; ?>

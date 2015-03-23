@@ -1,18 +1,23 @@
-	<?php echo $header;
+	<?php 
+	 require( DIR_TEMPLATE.$this->config->get('config_template')."/template/common/config.tpl" );
+	echo $header;
 
 	?>
 	
-	
+	<div class="container">
+<div class="row">
 <style>body #page{overflow:auto !important;}</style>
+ <?php if( $SPAN[0] ): ?>
+	<aside class="col-lg-<?php echo $SPAN[0];?> col-md-<?php echo $SPAN[0];?> col-sm-12 col-xs-12">
+		<?php echo $column_left; ?>
+	</aside>
+<?php endif; ?>
 	
 	
 
-<div id="content" >
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
+<section class="col-lg-<?php echo $SPAN[1];?> col-md-<?php echo $SPAN[1];?> col-sm-12 col-xs-12">
+    <?php   require( ThemeControlHelper::getLayoutPath( 'common/breadcrumb.tpl' ) );  ?>
+
   <?php if ($error_warning) { ?>
   <div class="warning"><?php echo $error_warning; ?></div>
   <?php } ?>
@@ -25,37 +30,29 @@
       <div class="buttons"><a href="<?php echo $insert; ?>" class="button"> <button><?php echo $button_insert; ?></button> </a> <a onclick="$('form').submit();" class="button"><button><?php echo $button_delete; ?></button></a></div>
     </div>
     <div class="content">
-      <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
+      <form action="<?php  echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
         <table class="list">
           <thead>
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
               <td class="center"><?php echo $column_image; ?></td>
               <td class="left"><?php if ($sort == 'pd.name') { ?>
-                <a href="<?php echo $sort_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_name; ?></a>
+                 <?php echo $column_name; ?> 
                 <?php } else { ?>
                 <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
                 <?php } ?></td>
-              <td class="left"><?php if ($sort == 'p.model') { ?>
-                <a href="<?php echo $sort_model; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_model; ?></a>
-                <?php } else { ?>
-                <a href="<?php echo $sort_model; ?>"><?php echo $column_model; ?></a>
-                <?php } ?></td>
-              <td class="left"><?php if ($sort == 'p.price') { ?>
-                <a href="<?php echo $sort_price; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_price; ?></a>
-                <?php } else { ?>
-                <a href="<?php echo $sort_price; ?>"><?php echo $column_price; ?></a>
-                <?php } ?></td>
-              <td class="right"><?php if ($sort == 'p.quantity') { ?>
-                <a href="<?php echo $sort_quantity; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_quantity; ?></a>
-                <?php } else { ?>
-                <a href="<?php echo $sort_quantity; ?>"><?php echo $column_quantity; ?></a>
-                <?php } ?></td>
-              <td class="left"><?php if ($sort == 'p.status') { ?>
-                <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
-                <?php } else { ?>
-                <a href="<?php echo $sort_status; ?>"><?php echo $column_status; ?></a>
-                <?php } ?></td>
+              <td class="left"> 
+                 <?php echo $column_model; ?> 
+             </td>
+              <td class="left"> 
+             <?php echo $column_price; ?> 
+              </td>
+              <td class="right"> 
+                 <?php echo $column_quantity; ?> 
+           </td>
+              <td class="left"> 
+                 <?php echo $column_status; ?> 
+                </td>
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
           </thead>
@@ -123,12 +120,16 @@
       <div class="pagination"><?php echo $pagination; ?></div>
     </div>
   </div>
-</div>
-<script type="text/javascript"><!--
+</section>
+</div></div>
+<script type="text/javascript">
 function filter() {
-	url = 'index.php?route=myproducts/myproducts&token=<?php echo $token; ?>';
+	url = 'index.php?route=myproducts/myproducts';
 	
 	var filter_name = $('input[name=\'filter_name\']').attr('value');
+
+
+	console.log(filter_name);
 
  
 	
@@ -163,23 +164,39 @@ function filter() {
 	
 	 location = url;
 
+	 console.log(url);
+
  
 }
 
-//--></script> 
-<script type="text/javascript"><!--
+</script> 
+<script type="text/javascript">
 $('#form input').keydown(function(e) {
 	if (e.keyCode == 13) {
 		filter();
 	}
 });
-//--></script> 
-<script type="text/javascript"><!--
+
+
+$('#form').on("keyup keypress", function(e) {
+	  var code = e.keyCode || e.which; 
+	  if (code  == 13) {               
+	    e.preventDefault();
+	    filter();
+	    return false;
+	  }
+	});
+
+</script> 
+<script type="text/javascript"> 
 $('input[name=\'filter_name\']').autocomplete({
+
+	
 	delay: 500,
 	source: function(request, response) {
+	 
 		$.ajax({
-			url: 'index.php?route=myproducts/myproducts/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=myproducts/myproducts/autocomplete&filter_name=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
 				response($.map(json, function(item) {
@@ -205,7 +222,7 @@ $('input[name=\'filter_model\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
-			url: 'index.php?route=myproducts/myproducts/autocomplete&token=<?php echo $token; ?>&filter_model=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=myproducts/myproducts/autocomplete&filter_model=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
 				response($.map(json, function(item) {
@@ -226,5 +243,5 @@ $('input[name=\'filter_model\']').autocomplete({
       	return false;
    	}
 });
-//--></script> 
+ </script> 
 <?php echo $footer; ?>

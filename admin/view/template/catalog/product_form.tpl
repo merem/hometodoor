@@ -770,7 +770,7 @@ CKEDITOR.replace('description<?php echo $language['language_id']; ?>', {
 });
 <?php } ?>
 //--></script> 
-<script type="text/javascript"><!--
+<script type="text/javascript"> 
 $.widget('custom.catcomplete', $.ui.autocomplete, {
 	_renderMenu: function(ul, items) {
 		var self = this, currentCategory = '';
@@ -853,10 +853,10 @@ $('#product-category div img').live('click', function() {
 	$('#product-category div:odd').attr('class', 'odd');
 	$('#product-category div:even').attr('class', 'even');	
 });
-
+</script>
 
  
-<script type="text/javascript"><!--	
+<script type="text/javascript"> 
 var option_row = <?php echo $option_row; ?>;
 
 $('input[name=\'option\']').catcomplete({
@@ -991,8 +991,8 @@ $('input[name=\'option\']').catcomplete({
       return false;
    }
 });
-//--></script> 
-<script type="text/javascript"><!--		
+ </script> 
+<script type="text/javascript"> 
 var option_value_row = <?php echo $option_value_row; ?>;
 
 function addOptionValue(option_row) {	
@@ -1029,8 +1029,8 @@ function addOptionValue(option_row) {
 
 	option_value_row++;
 }
-//--></script> 
-<script type="text/javascript"><!--
+ </script> 
+<script type="text/javascript"> 
 var discount_row = <?php echo $discount_row; ?>;
 
 function addDiscount() {
@@ -1056,7 +1056,7 @@ function addDiscount() {
 	
 	discount_row++;
 }
-//--></script> 
+ </script> 
 <script type="text/javascript"><!--
 var special_row = <?php echo $special_row; ?>;
 

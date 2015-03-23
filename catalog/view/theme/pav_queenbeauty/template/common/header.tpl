@@ -6,6 +6,7 @@
  * @copyright	Copyright (C) Augus 2013 PavoThemes.com <@emai:pavothemes@gmail.com>.All rights reserved.
  * @license		GNU General Public License version 2
 *******************************************************/
+ 
 $this->language->load('module/themecontrol');
 $themeName =  $this->config->get('config_template');
 require_once(DIR_SYSTEM . 'pavothemes/loader.php');
@@ -235,5 +236,5 @@ $('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></
     $blockcls = '';
     $modules = $helper->getModulesByPosition( $blockid );
     $ospans = array();
-    require( ThemeControlHelper::getLayoutPath( 'common/block-cols.tpl' ) );
+    require( ThemeControlHelper::getLayoutPath('common/block-cols.tpl' ) );
 ?>

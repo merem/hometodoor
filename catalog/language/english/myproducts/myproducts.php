@@ -88,6 +88,7 @@ $_['entry_profile']          = 'Profile:';
 
 $_['text_recurring_help']    = 'Recurring amounts are calculated by the frequency and cycles. <br />For example if you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks. <br />The length is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.';
 $_['text_recurring_title']   = 'Recurring payments';
+$_['text_my_products']   = 'My Products';
 $_['text_recurring_trial']   = 'Trial period';
 $_['entry_recurring']        = 'Recurring billing:';
 $_['entry_recurring_price']  = 'Recurring price:';

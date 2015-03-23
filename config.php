@@ -7,8 +7,10 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	
 	// HTTP
 	define('HTTP_SERVER', 'http://hometodoor-object90.rhcloud.com/');
+	define('HTTP_CATALOG', 'http://hometodoor-object90.rhcloud.com/');
 	// HTTPS
 	define('HTTPS_SERVER', 'http://hometodoor-object90.rhcloud.com/');
+	define('HTTPS_CATALOG', 'http://hometodoor-object90.rhcloud.com/');
 	
 	
 	
@@ -40,8 +42,10 @@ else{
 	
 // HTTP
 define('HTTP_SERVER', 'http://192.168.0.101/hometodoor/');
+define('HTTP_CATALOG', 'http://192.168.0.101/hometodoor/');
 // HTTPS
 define('HTTPS_SERVER', 'http://192.168.0.101/hometodoor/');
+define('HTTPS_CATALOG', 'http://192.168.0.101/hometodoor/');
 
 // DIR
 define('DIR_APPLICATION', '/var/www/hometodoor/catalog/');

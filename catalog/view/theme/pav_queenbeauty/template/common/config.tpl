@@ -9,6 +9,8 @@
 ?>
 <?php
 
+
+
 /* configuration column width follow grid 12 of bootstrap framework 3 */
 $column_left  = trim($column_left);
 $column_right  = trim($column_right);

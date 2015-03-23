@@ -2,6 +2,10 @@
 <?php
 class Controllermyproductsmyproducts extends Controller {
 	public function index() {
+		
+		
+		
+		
 		// set title of the page
 		$this->document->setTitle("My Custom Page");
 		 
@@ -27,17 +31,17 @@ class Controllermyproductsmyproducts extends Controller {
 		 
 		
 		
-		$this->data['breadcrumbs'][] = array(
+/* 		$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_home'),
 				'href'      => $this->url->link('common/home'),
 				'separator' => false
-		);
+		); */
 		
-		$this->data['breadcrumbs'][] = array(
+/* 		$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_account'),
 				'href'      => $this->url->link('account/account', '', 'SSL'),
 				'separator' => $this->language->get('text_separator')
-		);
+		); */
 		
 		
 		// define children templates
@@ -105,7 +109,8 @@ class Controllermyproductsmyproducts extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 	
-			$this->redirect($this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			//$this->redirect($this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('myproducts/myproducts', $url, 'SSL'));
 		}
 	
 		$this->getForm();
@@ -159,7 +164,8 @@ class Controllermyproductsmyproducts extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 	
-			$this->redirect($this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			//$this->redirect($this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('myproducts/myproducts',$url, 'SSL'));
 		}
 	
 		$this->getForm();
@@ -214,7 +220,8 @@ class Controllermyproductsmyproducts extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 	
-			$this->redirect($this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('myproducts/myproducts',$url, 'SSL'));
+			//$this->redirect($this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 	
 		$this->getList();
@@ -268,7 +275,8 @@ class Controllermyproductsmyproducts extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 	
-			$this->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+	//		$this->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('myproducts/myproducts',$url, 'SSL'));
 		}
 	
 		$this->getList();
@@ -364,7 +372,8 @@ class Controllermyproductsmyproducts extends Controller {
 		
 		$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_home'),
-				'href'      => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
+				'href'      => $this->url->link('common/home', 'SSL'),
+				//'href'      => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
 				'separator' => false
 		);
 		
@@ -372,13 +381,20 @@ class Controllermyproductsmyproducts extends Controller {
 	
 		$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('heading_title'),
-				'href'      => $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+				//'href'      => $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+				'href'      => $this->url->link('myproducts/myproducts', $url, 'SSL'),
 				'separator' => ' :: '
 		);
 	
-		$this->data['insert'] = $this->url->link('myproducts/myproducts/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['insert'] = $this->url->link('myproducts/myproducts/insert', $url, 'SSL');
+		$this->data['copy'] = $this->url->link('myproducts/myproducts/copy', $url, 'SSL');
+		$this->data['delete'] = $this->url->link('myproducts/myproducts/delete', $url, 'SSL');
+		
+		
+		
+		/* $this->data['insert'] = $this->url->link('myproducts/myproducts/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['copy'] = $this->url->link('myproducts/myproducts/copy', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('myproducts/myproducts/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['delete'] = $this->url->link('myproducts/myproducts/delete', 'token=' . $this->session->data['token'] . $url, 'SSL'); */
 	
 		$this->data['products'] = array();
 	
@@ -409,7 +425,8 @@ class Controllermyproductsmyproducts extends Controller {
 	
 			$action[] = array(
 					'text' => $this->language->get('text_edit'),
-					'href' => $this->url->link('myproducts/myproducts/update', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
+					//'href' => $this->url->link('myproducts/myproducts/update', 'token=' . $this->session->data['token'] . '&product_id=' . $result['product_id'] . $url, 'SSL')
+					'href' => $this->url->link('myproducts/myproducts/update', '&product_id=' . $result['product_id'] . $url, 'SSL')
 			);
 	
 			if ($result['image'] && file_exists(DIR_IMAGE . $result['image'])) {
@@ -464,7 +481,7 @@ class Controllermyproductsmyproducts extends Controller {
 		$this->data['button_delete'] = $this->language->get('button_delete');
 		$this->data['button_filter'] = $this->language->get('button_filter');
 	
-		$this->data['token'] = $this->session->data['token'];
+		//$this->data['token'] = $this->session->data['token'];
 	
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -512,12 +529,23 @@ class Controllermyproductsmyproducts extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 	
-		$this->data['sort_name'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, 'SSL');
+		/* $this->data['sort_name'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=pd.name' . $url, 'SSL');
 		$this->data['sort_model'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.model' . $url, 'SSL');
 		$this->data['sort_price'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.price' . $url, 'SSL');
 		$this->data['sort_quantity'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.quantity' . $url, 'SSL');
 		$this->data['sort_status'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.status' . $url, 'SSL');
-		$this->data['sort_order'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, 'SSL');
+		$this->data['sort_order'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&sort=p.sort_order' . $url, 'SSL'); */
+		
+		
+		
+
+		$this->data['sort_name'] = $this->url->link('catalog/product','&sort=pd.name' . $url, 'SSL');
+		$this->data['sort_model'] = $this->url->link('catalog/product', '&sort=p.model' . $url, 'SSL');
+		$this->data['sort_price'] = $this->url->link('catalog/product', '&sort=p.price' . $url, 'SSL');
+		$this->data['sort_quantity'] = $this->url->link('catalog/product','&sort=p.quantity' . $url, 'SSL');
+		$this->data['sort_status'] = $this->url->link('catalog/product', '&sort=p.status' . $url, 'SSL');
+		$this->data['sort_order'] = $this->url->link('catalog/product', '&sort=p.sort_order' . $url, 'SSL');
+		
 	
 		$url = '';
 	
@@ -554,8 +582,10 @@ class Controllermyproductsmyproducts extends Controller {
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_admin_limit');
 		$pagination->text = $this->language->get('text_pagination');
-		$pagination->url = $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
-	
+		//$pagination->url = $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+		$pagination->url = $this->url->link('myproducts/myproducts', $url . '&page={page}', 'SSL');
+		
+		
 		$this->data['pagination'] = $pagination->render();
 	
 		$this->data['filter_name'] = $filter_name;
@@ -774,29 +804,35 @@ class Controllermyproductsmyproducts extends Controller {
 	
 		$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('text_home'),
-				'href'      => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
+				//'href'      => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
+				'href'      => $this->url->link('common/home', 'SSL'),
 				'separator' => false
 		);
 	
 		$this->data['breadcrumbs'][] = array(
 				'text'      => $this->language->get('heading_title'),
-				'href'      => $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+				//'href'      => $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+				'href'      => $this->url->link('myproducts/myproducts', $url, 'SSL'),
 				'separator' => ' :: '
 		);
 	
 		if (!isset($this->request->get['product_id'])) {
-			$this->data['action'] = $this->url->link('myproducts/myproducts/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			//$this->data['action'] = $this->url->link('myproducts/myproducts/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+			$this->data['action'] = $this->url->link('myproducts/myproducts/insert',  $url, 'SSL');
 		} else {
-			$this->data['action'] = $this->url->link('myproducts/myproducts/update', 'token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url, 'SSL');
+			//$this->data['action'] = $this->url->link('myproducts/myproducts/update', 'token=' . $this->session->data['token'] . '&product_id=' . $this->request->get['product_id'] . $url, 'SSL');
+			$this->data['action'] = $this->url->link('myproducts/myproducts/update','&product_id=' . $this->request->get['product_id'] . $url, 'SSL');
 		}
 	
-		$this->data['cancel'] = $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		//$this->data['cancel'] = $this->url->link('myproducts/myproducts', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['cancel'] = $this->url->link('myproducts/myproducts', $url, 'SSL');
+		
 	
 		if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 			$product_info = $this->model_myproducts_myproducts->getProduct($this->request->get['product_id']);
 		}
 	
-		$this->data['token'] = $this->session->data['token'];
+		//$this->data['token'] = $this->session->data['token'];
 	
 		$this->load->model('localisation/language');
 	
@@ -1347,9 +1383,12 @@ class Controllermyproductsmyproducts extends Controller {
 			$this->data['product_layout'] = array();
 		}
 	
-		//$this->load->model('myproducts/layouts');
+		$this->load->model('myproducts/layout');
 	
-		//$this->data['layouts'] = $this->model_myproducts_layouts->getLayouts();
+		$this->data['layouts'] = $this->model_myproducts_layout->getLayouts();
+		
+		
+		
 
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/myproducts/product_form.tpl')) {
@@ -1360,6 +1399,10 @@ class Controllermyproductsmyproducts extends Controller {
 		
 		//$this->template = 'myproducts/product_form.tpl';
 		$this->children = array(
+				'common/column_left',
+				'common/column_right',
+				'common/content_top',
+				'common/content_bottom',
 				'common/header',
 				'common/footer'
 		);

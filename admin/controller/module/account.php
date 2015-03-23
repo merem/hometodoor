@@ -77,6 +77,8 @@ class ControllerModuleAccount extends Controller {
 		$this->load->model('design/layout');
 
 		$this->data['layouts'] = $this->model_design_layout->getLayouts();
+		
+ 
 
 		$this->template = 'module/account.tpl';
 		$this->children = array(
