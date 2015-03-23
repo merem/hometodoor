@@ -1,6 +1,10 @@
 <?php
 
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
 
 if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){  // if online
 
@@ -14,6 +18,7 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	// HTTPS
 	define('HTTPS_SERVER', 'http://hometodoor-object90.rhcloud.com/');
 	define('HTTPS_CATALOG', 'http://hometodoor-object90.rhcloud.com/');
+	
 	
 	// DIR
 	define('DIR_APPLICATION',$OPENSHIFT_REPO_DIR.'/admin/');
