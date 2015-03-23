@@ -770,7 +770,7 @@ CKEDITOR.replace('description<?php echo $language['language_id']; ?>', {
 });
 <?php } ?>
 //--></script> 
-<script type="text/javascript"> 
+<script type="text/javascript"><!--
 $.widget('custom.catcomplete', $.ui.autocomplete, {
 	_renderMenu: function(ul, items) {
 		var self = this, currentCategory = '';
@@ -853,10 +853,182 @@ $('#product-category div img').live('click', function() {
 	$('#product-category div:odd').attr('class', 'odd');
 	$('#product-category div:even').attr('class', 'even');	
 });
-</script>
 
- 
-<script type="text/javascript"> 
+// Filter
+$('input[name=\'filter\']').autocomplete({
+	delay: 500,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/filter/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.name,
+						value: item.filter_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('#product-filter' + ui.item.value).remove();
+		
+		$('#product-filter').append('<div id="product-filter' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_filter[]" value="' + ui.item.value + '" /></div>');
+
+		$('#product-filter div:odd').attr('class', 'odd');
+		$('#product-filter div:even').attr('class', 'even');
+				
+		return false;
+	},
+	focus: function(event, ui) {
+      return false;
+   }
+});
+
+$('#product-filter div img').live('click', function() {
+	$(this).parent().remove();
+	
+	$('#product-filter div:odd').attr('class', 'odd');
+	$('#product-filter div:even').attr('class', 'even');	
+});
+
+// Downloads
+$('input[name=\'download\']').autocomplete({
+	delay: 500,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/download/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.name,
+						value: item.download_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('#product-download' + ui.item.value).remove();
+		
+		$('#product-download').append('<div id="product-download' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_download[]" value="' + ui.item.value + '" /></div>');
+
+		$('#product-download div:odd').attr('class', 'odd');
+		$('#product-download div:even').attr('class', 'even');
+				
+		return false;
+	},
+	focus: function(event, ui) {
+      return false;
+   }
+});
+
+$('#product-download div img').live('click', function() {
+	$(this).parent().remove();
+	
+	$('#product-download div:odd').attr('class', 'odd');
+	$('#product-download div:even').attr('class', 'even');	
+});
+
+// Related
+$('input[name=\'related\']').autocomplete({
+	delay: 500,
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+			dataType: 'json',
+			success: function(json) {		
+				response($.map(json, function(item) {
+					return {
+						label: item.name,
+						value: item.product_id
+					}
+				}));
+			}
+		});
+	}, 
+	select: function(event, ui) {
+		$('#product-related' + ui.item.value).remove();
+		
+		$('#product-related').append('<div id="product-related' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="product_related[]" value="' + ui.item.value + '" /></div>');
+
+		$('#product-related div:odd').attr('class', 'odd');
+		$('#product-related div:even').attr('class', 'even');
+				
+		return false;
+	},
+	focus: function(event, ui) {
+      return false;
+   }
+});
+
+$('#product-related div img').live('click', function() {
+	$(this).parent().remove();
+	
+	$('#product-related div:odd').attr('class', 'odd');
+	$('#product-related div:even').attr('class', 'even');	
+});
+//--></script> 
+<script type="text/javascript"><!--
+var attribute_row = <?php echo $attribute_row; ?>;
+
+function addAttribute() {
+	html  = '<tbody id="attribute-row' + attribute_row + '">';
+    html += '  <tr>';
+	html += '    <td class="left"><input type="text" name="product_attribute[' + attribute_row + '][name]" value="" /><input type="hidden" name="product_attribute[' + attribute_row + '][attribute_id]" value="" /></td>';
+	html += '    <td class="left">';
+	<?php foreach ($languages as $language) { ?>
+	html += '<textarea name="product_attribute[' + attribute_row + '][product_attribute_description][<?php echo $language['language_id']; ?>][text]" cols="40" rows="5"></textarea><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" align="top" /><br />';
+    <?php } ?>
+	html += '    </td>';
+	html += '    <td class="left"><a onclick="$(\'#attribute-row' + attribute_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
+    html += '  </tr>';	
+    html += '</tbody>';
+	
+	$('#attribute tfoot').before(html);
+	
+	attributeautocomplete(attribute_row);
+	
+	attribute_row++;
+}
+
+function attributeautocomplete(attribute_row) {
+	$('input[name=\'product_attribute[' + attribute_row + '][name]\']').catcomplete({
+		delay: 500,
+		source: function(request, response) {
+			$.ajax({
+				url: 'index.php?route=catalog/attribute/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+				dataType: 'json',
+				success: function(json) {	
+					response($.map(json, function(item) {
+						return {
+							category: item.attribute_group,
+							label: item.name,
+							value: item.attribute_id
+						}
+					}));
+				}
+			});
+		}, 
+		select: function(event, ui) {
+			$('input[name=\'product_attribute[' + attribute_row + '][name]\']').attr('value', ui.item.label);
+			$('input[name=\'product_attribute[' + attribute_row + '][attribute_id]\']').attr('value', ui.item.value);
+			
+			return false;
+		},
+		focus: function(event, ui) {
+      		return false;
+   		}
+	});
+}
+
+$('#attribute tbody').each(function(index, element) {
+	attributeautocomplete(index);
+});
+//--></script> 
+<script type="text/javascript"><!--	
 var option_row = <?php echo $option_row; ?>;
 
 $('input[name=\'option\']').catcomplete({
@@ -991,8 +1163,8 @@ $('input[name=\'option\']').catcomplete({
       return false;
    }
 });
- </script> 
-<script type="text/javascript"> 
+//--></script> 
+<script type="text/javascript"><!--		
 var option_value_row = <?php echo $option_value_row; ?>;
 
 function addOptionValue(option_row) {	
@@ -1029,8 +1201,8 @@ function addOptionValue(option_row) {
 
 	option_value_row++;
 }
- </script> 
-<script type="text/javascript"> 
+//--></script> 
+<script type="text/javascript"><!--
 var discount_row = <?php echo $discount_row; ?>;
 
 function addDiscount() {
@@ -1056,7 +1228,7 @@ function addDiscount() {
 	
 	discount_row++;
 }
- </script> 
+//--></script> 
 <script type="text/javascript"><!--
 var special_row = <?php echo $special_row; ?>;
 
