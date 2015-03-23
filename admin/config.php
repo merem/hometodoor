@@ -16,16 +16,24 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	define('HTTPS_CATALOG', 'http://hometodoor-object90.rhcloud.com/');
 	
 	// DIR
-	define('DIR_APPLICATION',$OPENSHIFT_REPO_DIR.'/catalog/');
+	define('DIR_APPLICATION',$OPENSHIFT_REPO_DIR.'/admin/');
 	define('DIR_SYSTEM', $OPENSHIFT_REPO_DIR.'/system/');
 	define('DIR_DATABASE',$OPENSHIFT_REPO_DIR.'/system/database/');
-	define('DIR_LANGUAGE', $OPENSHIFT_REPO_DIR.'/catalog/language/');
-	define('DIR_TEMPLATE', $OPENSHIFT_REPO_DIR.'/catalog/view/theme/');
+	define('DIR_LANGUAGE', $OPENSHIFT_REPO_DIR.'/admin/language/');
+	define('DIR_TEMPLATE', $OPENSHIFT_REPO_DIR.'/admin/view/theme/');
 	define('DIR_CONFIG', $OPENSHIFT_REPO_DIR.'/system/config/');
 	define('DIR_IMAGE',$OPENSHIFT_REPO_DIR.'/image/');
 	define('DIR_CACHE', $OPENSHIFT_REPO_DIR.'/system/cache/');
 	define('DIR_DOWNLOAD',$OPENSHIFT_REPO_DIR.'/download/');
 	define('DIR_LOGS', $OPENSHIFT_REPO_DIR.'/system/logs/');
+	define('DIR_CATALOG', $OPENSHIFT_REPO_DIR.'/catalog/');
+	
+	
+	
+ 
+	
+	
+	
 	
 	// DB
 	define('DB_DRIVER', 'mysqli');
@@ -46,7 +54,7 @@ define('HTTPS_SERVER', 'http://192.168.0.101/hometodoor/admin/');
 define('HTTPS_CATALOG', 'http://192.168.0.101/hometodoor/');
 
 // DIR
-define('DIR_APPLICATION', '/var/www/hometodoor/admin/');
+define('DIR_APPLICATION', '/var/www/hometodoor/catalog/');
 define('DIR_SYSTEM', '/var/www/hometodoor/system/');
 define('DIR_DATABASE', '/var/www/hometodoor/system/database/');
 define('DIR_LANGUAGE', '/var/www/hometodoor/admin/language/');

@@ -407,3 +407,4 @@ admin/view/template/module/pavblog/comments.tpl
 admin/view/template/module/pavblog/comment.tpl
 admin/controller/module/pavtestimonial.php
 admin/view/template/module/pavtestimonial.tpl
+admin/language/english/error/not_found.php
