@@ -4781,3 +4781,5 @@
 2015-03-23 11:07:23 - PHP Notice:  Undefined index: keyword in /var/www/hometodoor/catalog/model/myproducts/myproducts.php on line 264
 2015-03-23 11:07:23 - PHP Notice:  Undefined variable: column_left in /var/www/hometodoor/catalog/view/theme/pav_queenbeauty/template/common/config.tpl on line 15
 2015-03-23 11:07:23 - PHP Notice:  Undefined variable: column_right in /var/www/hometodoor/catalog/view/theme/pav_queenbeauty/template/common/config.tpl on line 16
+2015-03-23 12:09:39 - PHP Notice:  Error: Could not load template /var/www/hometodoor/admin/view/template/default/template/common/column_left.tpl! in /var/www/hometodoor/vqmod/vqcache/vq2-system_engine_controller.php on line 90
+2015-03-23 12:09:41 - PHP Notice:  Error: Could not load template /var/www/hometodoor/admin/view/template/default/template/common/column_left.tpl! in /var/www/hometodoor/vqmod/vqcache/vq2-system_engine_controller.php on line 90

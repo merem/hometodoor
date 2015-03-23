@@ -28,13 +28,6 @@ if(strpos($_SERVER['SERVER_NAME'],'hometodoor-object90.rhcloud.com') !== false){
 	define('DIR_LOGS', $OPENSHIFT_REPO_DIR.'/system/logs/');
 	define('DIR_CATALOG', $OPENSHIFT_REPO_DIR.'/catalog/');
 	
-	
-	
- 
-	
-	
-	
-	
 	// DB
 	define('DB_DRIVER', 'mysqli');
 	define('DB_HOSTNAME', '127.6.214.2:3306');
@@ -54,7 +47,7 @@ define('HTTPS_SERVER', 'http://192.168.0.101/hometodoor/admin/');
 define('HTTPS_CATALOG', 'http://192.168.0.101/hometodoor/');
 
 // DIR
-define('DIR_APPLICATION', '/var/www/hometodoor/catalog/');
+define('DIR_APPLICATION', '/var/www/hometodoor/admin/');
 define('DIR_SYSTEM', '/var/www/hometodoor/system/');
 define('DIR_DATABASE', '/var/www/hometodoor/system/database/');
 define('DIR_LANGUAGE', '/var/www/hometodoor/admin/language/');
