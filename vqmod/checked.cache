@@ -209,3 +209,6 @@ catalog/model/sale/customer_group.php
 catalog/model/myproducts/download.php
 catalog/model/myproducts/layout.php
 catalog/view/theme/pav_queenbeauty/template/myproducts/product_form.tpl
+catalog/controller/information/information.php
+catalog/controller/payment/cod.php
+catalog/view/theme/pav_queenbeauty/template/payment/cod.tpl

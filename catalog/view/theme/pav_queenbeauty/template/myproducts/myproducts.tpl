@@ -3,7 +3,7 @@
 
 
 
-<div class="container    aaa">
+<div class="container  ">
 <div class="row">
 
 <?php if( $SPAN[0] ): ?>

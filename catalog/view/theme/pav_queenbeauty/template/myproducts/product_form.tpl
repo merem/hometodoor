@@ -124,7 +124,7 @@ echo $header; ?>
                 <td><input type="text" name="price" value="<?php echo $price; ?>" /></td>
             </tr>
             
-            <tr>
+            <tr style="display:none">
                 <td>Bulk booking price</td>
                 <td><input type="text" name="bulk_price" value="<?php echo $bulk_price; ?>" /></td>
             </tr>
@@ -646,12 +646,12 @@ echo $header; ?>
                 </tfoot>
             </table>
         </div>
-         
+        <?php */ ?> 
         <div id="tab-discount">
           <table id="discount" class="list">
             <thead>
               <tr>
-                <td class="left"><?php echo $entry_customer_group; ?></td>
+                <td class="left"  style="display: none;"><?php echo $entry_customer_group; ?></td >
                 <td class="right"><?php echo $entry_quantity; ?></td>
                 <td class="right"><?php echo $entry_priority; ?></td>
                 <td class="right"><?php echo $entry_price; ?></td>
@@ -664,7 +664,7 @@ echo $header; ?>
             <?php foreach ($product_discounts as $product_discount) { ?>
             <tbody id="discount-row<?php echo $discount_row; ?>">
               <tr>
-                <td class="left"><select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]">
+                <td class="left"  style="display: none;"><select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]"  >
                     <?php foreach ($customer_groups as $customer_group) { ?>
                     <?php if ($customer_group['customer_group_id'] == $product_discount['customer_group_id']) { ?>
                     <option value="<?php echo $customer_group['customer_group_id']; ?>" selected="selected"><?php echo $customer_group['name']; ?></option>
@@ -691,6 +691,9 @@ echo $header; ?>
             </tfoot>
           </table>
         </div>
+        
+        
+        <?php  /* ?>
           
         <div id="tab-special">
           <table id="special" class="list">
@@ -1055,6 +1058,35 @@ $('#product-related div img').live('click', function() {
 	$('#product-related div:odd').attr('class', 'odd');
 	$('#product-related div:even').attr('class', 'even');	
 });
+ </script> 
+ 
+ 
+ <script type="text/javascript"> 
+var discount_row = <?php echo $discount_row; ?>;
+
+function addDiscount() {
+	html  = '<tbody id="discount-row' + discount_row + '">';
+	html += '  <tr>'; 
+    html += '    <td class="left"  style="display:none"><select name="product_discount[' + discount_row + '][customer_group_id]"  >';
+    <?php foreach ($customer_groups as $customer_group) { ?>
+    html += '      <option value="<?php echo $customer_group['customer_group_id']; ?>"><?php echo addslashes($customer_group['name']); ?></option>';
+    <?php } ?>
+    html += '    </select></td>';		
+    html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][quantity]" value="" size="2" /></td>';
+    html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][priority]" value="" size="2" /></td>';
+	html += '    <td class="right"><input type="text" name="product_discount[' + discount_row + '][price]" value="" /></td>';
+    html += '    <td class="left"><input type="text" name="product_discount[' + discount_row + '][date_start]" value="" class="date" /></td>';
+	html += '    <td class="left"><input type="text" name="product_discount[' + discount_row + '][date_end]" value="" class="date" /></td>';
+	html += '    <td class="left"><a onclick="$(\'#discount-row' + discount_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
+	html += '  </tr>';	
+    html += '</tbody>';
+	
+	$('#discount tfoot').before(html);
+		
+	$('#discount-row' + discount_row + ' .date').datepicker({dateFormat: 'yy-mm-dd'});
+	
+	discount_row++;
+}
  </script> 
  
  <script type="text/javascript"> 
