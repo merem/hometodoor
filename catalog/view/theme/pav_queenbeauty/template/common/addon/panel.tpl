@@ -38,7 +38,7 @@ $(document).ready( function (){
 
 </script>
 
-<div id="pav-paneltool" class="hidden-sm hidden-xs">
+<div id="pav-paneltool" class="hidden-sm hidden-xs"  style="display:none">
 <div class="paneltool themetool">
 	<div class="panelbutton">
 		<i class="fa fa-cog"></i>

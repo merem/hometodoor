@@ -165,7 +165,7 @@
 						<?php } ?>
 						
 						
-								<?php if ($made_on) { ?>
+								<?php if ($made_on  && $made_on != '0000-00-00') { ?>
 							<p>
 								<i class="fa fa-chevron-down"></i>
 								<b>Made on</b>

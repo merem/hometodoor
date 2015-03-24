@@ -1087,7 +1087,7 @@ class Controllermyproductsmyproducts extends Controller {
 		} elseif (!empty($product_info)) {
 			$this->data['status'] = $product_info['status'];
 		} else {
-			$this->data['status'] = 1;
+			$this->data['status'] = 0;
 		}
 	
 		if (isset($this->request->post['weight'])) {
