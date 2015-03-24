@@ -131,6 +131,10 @@
 								<a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a>
 							</p>
 						<?php } ?>
+						
+								
+						
+						
 						<p>
 							<i class="fa fa-chevron-down"></i>
 							<b><?php echo $text_model; ?></b>
@@ -148,6 +152,37 @@
 							<b><?php echo $text_stock; ?></b>
 							<span><?php echo $stock; ?></span>
 						</p>
+						
+						
+					<?php  // additional code    ?>
+						
+							<?php if ($shelf_life) { ?>
+							<p>
+								<i class="fa fa-chevron-down"></i>
+								<b>Shelf Life</b>
+								<?php echo $shelf_life; ?>
+							</p>
+						<?php } ?>
+						
+						
+								<?php if ($made_on) { ?>
+							<p>
+								<i class="fa fa-chevron-down"></i>
+								<b>Made on</b>
+								<?php echo $made_on; ?>
+							</p>
+						<?php } ?>
+
+						
+							<?php if ($ingredients) { ?>
+							<p>
+								<i class="fa fa-chevron-down"></i>
+								<b>Ingredients</b>
+								<?php echo $ingredients; ?>
+							</p>
+						<?php } ?>
+						
+						
 					</div>
 
 

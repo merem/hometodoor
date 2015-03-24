@@ -18,7 +18,11 @@
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
+          
+         
             <?php foreach ($languages as $language) { ?>
+            
+            
             <a href="#language<?php echo $language['language_id']; ?>"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a>
             <?php } ?>
           </div>
@@ -760,6 +764,8 @@
 <script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--
 <?php foreach ($languages as $language) { ?>
+
+
 CKEDITOR.replace('description<?php echo $language['language_id']; ?>', {
 	filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 	filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',

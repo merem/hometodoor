@@ -738,6 +738,10 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('localisation/language');
 
 		$this->data['languages'] = $this->model_localisation_language->getLanguages();
+		
+		
+ 
+ 
 
 		if (isset($this->request->post['product_description'])) {
 			$this->data['product_description'] = $this->request->post['product_description'];
@@ -1301,15 +1305,26 @@ class ControllerCatalogProduct extends Controller {
 		foreach ($this->request->post['product_description'] as $language_id => $value) {
 			if ((utf8_strlen($value['name']) < 1) || (utf8_strlen($value['name']) > 255)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
+				
 			}
 		}
 
 		if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
 			$this->error['model'] = $this->language->get('error_model');
+			
+			
 		}
+		
+		
 
 		if ($this->error && !isset($this->error['warning'])) {
+			
+			/*print_r($this->error);
+			exit;*/
 			$this->error['warning'] = $this->language->get('error_warning');
+			
+			
+			
 		}
 
 		if (!$this->error) {

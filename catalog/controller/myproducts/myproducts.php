@@ -965,6 +965,46 @@ class Controllermyproductsmyproducts extends Controller {
 		} else {
 			$this->data['price'] = '';
 		}
+		
+		
+		// additional info
+		
+		if (isset($this->request->post['bulk_price'])) {
+			$this->data['bulk_price'] = $this->request->post['bulk_price'];
+		} elseif (!empty($product_info)) {
+			$this->data['bulk_price'] = $product_info['bulk_price'];
+		} else {
+			$this->data['bulk_price'] = '';
+		}
+		
+		
+		if (isset($this->request->post['ingredients'])) {
+			$this->data['ingredients'] = $this->request->post['ingredients'];
+		} elseif (!empty($product_info)) {
+			$this->data['ingredients'] = $product_info['ingredients'];
+		} else {
+			$this->data['ingredients'] = '';
+		}
+		
+		if (isset($this->request->post['made_on'])) {
+			$this->data['made_on'] = $this->request->post['made_on'];
+		} elseif (!empty($product_info)) {
+			$this->data['made_on'] = $product_info['made_on'];
+		} else {
+			$this->data['made_on'] = '';
+		}
+		
+		
+		if (isset($this->request->post['shelf_life'])) {
+			$this->data['shelf_life'] = $this->request->post['shelf_life'];
+		} elseif (!empty($product_info)) {
+			$this->data['shelf_life'] = $product_info['shelf_life'];
+		} else {
+			$this->data['shelf_life'] = '';
+		}
+		
+		
+		
 	
 		$this->load->model('myproducts/profile');
 	
@@ -1194,7 +1234,7 @@ class Controllermyproductsmyproducts extends Controller {
 		$this->data['product_attributes'] = array();
 	
 		foreach ($product_attributes as $product_attribute) {
-			$attribute_info = $this->model_catalog_attribute->getAttribute($product_attribute['attribute_id']);
+			$attribute_info = $this->model_myproducts_attribute->getAttribute($product_attribute['attribute_id']);
 	
 			if ($attribute_info) {
 				$this->data['product_attributes'][] = array(

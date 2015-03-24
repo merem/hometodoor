@@ -277,6 +277,15 @@ class ControllerProductProduct extends Controller {
 			$this->data['model'] = $product_info['model'];
 			$this->data['reward'] = $product_info['reward'];
 			$this->data['points'] = $product_info['points'];
+			
+			// additional info
+			
+			$this->data['shelf_life'] = $product_info['shelf_life'];
+			$this->data['made_on'] = $product_info['made_on'];
+			$this->data['ingredients'] = $product_info['ingredients'];
+			//$this->data['ingredients'] = $product_info['ingredients'];
+			
+			
 
 			if ($product_info['quantity'] <= 0) {
 				$this->data['stock'] = $product_info['stock_status'];
